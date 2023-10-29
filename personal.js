@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
     /*objeto vacio, el cual contendra los objetos instanciados a partir de la función constructora. 
     Cada objeto nuevo que se instancia pertenece a un empleado nuevo*/
     let empleados = [];
+    let jsonDatos = ''; //Declaro la vble. jsonData vacia para que esté disponible en todo el ambito.
 
     let botonPersonal = document.querySelector('#boton-personal');
     let desplegablePersonal = document.querySelector('#desplegable-Personal');
@@ -13,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let itemLegajo = document.querySelector('.item-legajo');
     let itemCargar = document.querySelector('.item-cargar');
     let empleadoNuevo = document.querySelector('#empleado-nuevo');
-    let btnCargarNuevoEmpleado = document.querySelector('#formularioNuevoEmpleado');
+    
 
     // Programando el evento mouseenter para desplegar menu
     botonPersonal.addEventListener('mouseenter', function () {
@@ -87,13 +88,19 @@ Oculto el desplegable si se hace clic en cualquier parte fuera del desplegable o
 NuevoEmpleado.prototype.cargarEmpleado = function () {
 
         //funcion que me permite instanciar cargar el objeto para un nuevo empleado en el array de objetos empleados[]
-    btnCargarNuevoEmpleado.addEventListener('submit', function (event) {
+        let formulario = document.querySelector('#formularioNuevoEmpleado');
+        formulario.addEventListener('submit', function (event) {
         event.preventDefault();
-        let nombres = document.querySelector('#apyNom').value;
-        let numero = document.querySelector('#legajo').value;
+        let nombres = formulario.querySelector('#apyNom').value;
+        let numero = formulario.querySelector('#legajo').value;
+        let nacimiento = formulario.querySelector('#fechaNacimiento').value;
+        let documentoIdentidad = formulario.querySelector('#DNI').value;
+        let domicilioEmpleado = formulario.querySelector('#domicilio').value;
+        let tel = formulario.querySelector('#telefono').value;
+        let puesto = formulario.querySelector('#cargo').value;
         
         // Instanciando el nuevo empleado con el valor del legajo
-        let nuevo = new NuevoEmpleado(nombres, numero);
+        let nuevo = new NuevoEmpleado(nombres, numero, nacimiento, documentoIdentidad, domicilioEmpleado, tel, puesto  );
         empleados.push(nuevo);
         
     
@@ -101,8 +108,18 @@ NuevoEmpleado.prototype.cargarEmpleado = function () {
         console.log(`Datos: ${JSON.stringify(empleados)}`);
 
         // Limpiando los campos del formulario
-        document.querySelector('#apyNom').value = '';
-        document.querySelector('#legajo').value = '';
+        formulario.querySelector('#apyNom').value = '';
+        formulario.querySelector('#legajo').value = '';
+        formulario.querySelector('#fechaNacimiento').value = '';
+        formulario.querySelector('#DNI').value = '';
+        formulario.querySelector('#domicilio').value = '';
+        formulario.querySelector('#telefono').value = '';
+        formulario.querySelector('#cargo').value = '';
+
+
+            jsonDatos = JSON.stringify(empleados);
+            console.log(jsonDatos);
+          
     
 });
 }
@@ -111,5 +128,6 @@ NuevoEmpleado.prototype.cargarEmpleado = function () {
 //llamo al metodo cargarEmpleado()
   let empleado = new NuevoEmpleado();
   empleado.cargarEmpleado();
+
 });
 
