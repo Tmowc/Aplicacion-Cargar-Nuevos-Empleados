@@ -1,13 +1,19 @@
-//Manipulacion del DOM
+
+
+////Capturando elementos con la manipulación del DOM
 document.addEventListener('DOMContentLoaded', function () {
-    // Obteniendo los elementos
+    
+    /*objeto vacio, el cual contendra los objetos instanciados a partir de la función constructora. 
+    Cada objeto nuevo que se instancia pertenece a un empleado nuevo*/
+    let empleados = [];
+
     let botonPersonal = document.querySelector('#boton-personal');
     let desplegablePersonal = document.querySelector('#desplegable-Personal');
     let seccionPersonal = document.querySelector('#personal');
     let itemLegajo = document.querySelector('.item-legajo');
     let itemCargar = document.querySelector('.item-cargar');
     let empleadoNuevo = document.querySelector('#empleado-nuevo');
-    
+    let btnCargarNuevoEmpleado = document.querySelector('#formularioNuevoEmpleado');
 
     // Programando el evento mouseenter para desplegar menu
     botonPersonal.addEventListener('mouseenter', function () {
@@ -61,13 +67,11 @@ Oculto el desplegable si se hace clic en cualquier parte fuera del desplegable o
         }
     }
     
+
     
     //programando la carga de datos de un nuevo empleado:
 
-    //Objeto vacío empleado, donde se almacenan los empleados:
-    let empleado = {};
-
-    //generando la función constructora de los objetos nuevos empleados:
+    //generando la fcion. constructora a partir de la cual se instanciaran los objetos nuevos empleados:
      function NuevoEmpleado(apyNom, numLegajo, fechaNac, dni, domicilio, telefono, cargo ) {
         this.apyNom = apyNom;
         this.numLegajo = numLegajo;
@@ -78,37 +82,34 @@ Oculto el desplegable si se hace clic en cualquier parte fuera del desplegable o
         this.cargo = cargo;
     }
 
-    //funcion que me permite obtener el valor del input del legajo
-    function obtenerLegajo() {
-       let legajo = document.getElementById('legajo').value; 
-       return legajo;
-    }
 
-// Llamando al método cargar empleado:
+// Llamando al metodo cargar empleado:
 NuevoEmpleado.prototype.cargarEmpleado = function () {
 
-    
-    let btnCargarNuevoEmpleado = document.querySelector('.button-cargarEmpleadoNuevo');
-    btnCargarNuevoEmpleado.addEventListener('click', cargarNuevoEmpleado);
-    
-    //funcion que me permite instanciar el objeto para un nuevo empleado
-    function cargarNuevoEmpleado(event) {
+        //funcion que me permite instanciar cargar el objeto para un nuevo empleado en el array de objetos empleados[]
+    btnCargarNuevoEmpleado.addEventListener('submit', function (event) {
         event.preventDefault();
-        let valorLegajo = obtenerLegajo();//asigno a la vble. el valor de retorno de la funcion obtenerLegajo()
+        let nombres = document.querySelector('#apyNom').value;
+        let numero = document.querySelector('#legajo').value;
         
         // Instanciando el nuevo empleado con el valor del legajo
-        let nuevo = new NuevoEmpleado('Martínez, Juana', valorLegajo, '10/10/2001', '5000', '25 de Mayo Nº 1536', '391-2156879', 'Secretaria');
-       
-        //probando en consola:
-        console.log('Datos del nuevo empleado:', nuevo);
+        let nuevo = new NuevoEmpleado(nombres, numero);
+        empleados.push(nuevo);
+        
+    
+        //probando en consola del navegador:
+        console.log(`Datos: ${JSON.stringify(empleados)}`);
 
-        // Devolver la instancia del nuevo empleado
-        return nuevo;
-    }
-};
+        // Limpiando los campos del formulario
+        document.querySelector('#apyNom').value = '';
+        document.querySelector('#legajo').value = '';
+    
+});
+}
+
 
 //llamo al metodo cargarEmpleado()
-  let nuevoEmpleado = new NuevoEmpleado();
-  nuevoEmpleado.cargarEmpleado();
+  let empleado = new NuevoEmpleado();
+  empleado.cargarEmpleado();
 });
 
