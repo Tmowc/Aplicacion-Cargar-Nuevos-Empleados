@@ -1,0 +1,223 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    font-size: 62.5%;
+}
+
+:root{
+   --purple: rgb(56, 8, 56);
+}
+
+.hide{
+    display: none;
+}
+/* margen para la cabecera y el main*/
+body {
+    padding-top: 56px; /* ajusta  segun la altura del header */
+}
+
+#personal {
+    width: 50em; 
+    height: 38em;
+    margin-top: 20em; /* ajusta  segun la altura de tu header +  margen adicional  */
+}
+
+#empleado-nuevo{
+    width: 50em; 
+    height: 38em;
+    margin-top: 18em; /* ajusta  segun la altura de tu header +  margen adicional  */
+}
+
+
+nav{
+    background-color: var(--purple);
+    font-size: 2rem;
+}
+main p{
+    background-color: yellow;
+    padding-top: 20em;
+    padding-left: 5em;
+}
+.logo{
+    width: 10em;
+    height: 10em;
+}
+.row-cols-2>* {
+    flex: 0 0 auto;
+    width: 100%;
+}
+#boton-personal{
+    font-size: 1.5rem;
+}
+
+
+/*Estilos de los grupos contenidos en el desplegable */
+.group-desplegable{
+    padding-left: 0.8em;
+    padding-top: 0.5em;
+}
+.group-desplegable h6{
+    color: #390932;
+    font-weight: bold;
+}
+.group-desplegable a{
+    color: #390932;
+    width: 100%;
+}
+#desplegable-Personal{
+    width: 15em;
+    height: 15em;
+    margin-left: 1em;
+}
+
+/* estilos seccion archivo de personal*/
+.caja-seccion{
+    width: 50em; /* 500px / 16px = 31.25em */
+    height: 38em;
+    padding: 0;
+    display: grid;
+    grid-template-columns: [x0] 1fr[x1];
+    grid-template-rows: [y0] 1fr[y1] 1fr[y2];
+    border: 1px solid rgb(69, 3, 53);
+}
+
+/* Imagen de fondo */
+.fondoForm{
+    grid-column: x0/x1;
+    grid-row: y0/y1;
+    left: 20em;
+    width: 499px;
+    height: 250px;
+    background-image: url('./assets/img/usuario-red-personas-conexion-placa-circuito-tecnologia-conexion.jpg');
+}
+
+ 
+.form-container{
+    height: 125px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 17px;
+}
+
+#form{
+    width: 30em;
+    display: flex;
+    flex-direction: column;
+    /*margin-left: 20px;*/
+    gap: 0.8em;
+}
+
+label{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.numero{
+    font-family: 'Quicksand';
+    font-size: 16px;
+    color: rgb(69, 3, 53);
+}
+
+input{
+    height: 30px;
+    font-family: 'quicksand';
+    padding-left: 3px;
+    margin-bottom: 4px;
+}
+
+.button-buscarEmpleado{
+    color: white;
+    background-color: rgb(69, 3, 53);
+    font-family: 'quicksand';
+    font-size: 1.5rem;
+    font-weight: bold;
+    height: 2.4em;
+    border-radius: 0.25em;
+    border: none;
+    margin-bottom: 1.4em;
+    cursor: pointer;
+}
+
+/* Boton nuevo empleado 
+.button-cargarEmpleado{
+    font-family: 'quicksand';
+    width: 150px;
+    height: 30px;
+    color: white;
+    background-color: rgb(69, 3, 53);
+    font-weight: bold;
+    border-radius: 3px;
+    border: none;
+    margin-top: 3px;
+    cursor: pointer;
+}  
+
+
+/*Estilo seccion Nuevo empleado */
+
+.caja-nuevoEmpleado{
+    width: 50em; /* 500px / 16px = 31.25em */
+    height: 77em;
+    padding: 0;
+    display: grid;
+    grid-template-columns: [x0] 1fr[x1] 1fr[x2];
+    grid-template-rows: [y0] 1fr[y1] 1fr[y2];
+    border: 1px solid rgb(69, 3, 53);
+}
+.fondoFormulario{
+    grid-column: x0/x2;
+    grid-row: y0/y1;
+}
+
+.caja-datosNuevoEmpleado{
+    width: 100%;
+    height: inherit;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 1em;
+
+}
+
+.datos-containerNuevoEmpleado{
+    width: 28em;
+    margin-top: 0;
+    margin-left: 2.8em;
+}
+.formularioNuevoEmpleado{
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 35px;
+    gap: 8px;
+
+}
+
+.button-cargarEmpleadoNuevo{
+    width: 100%;
+    height: 2.4em;
+    font-size: 1.5rem;
+    font-family: 'quicksand';
+    color: white;
+    background-color: rgb(69, 3, 53);
+    font-weight: bold;
+    border-radius: 0.25em;
+    border: none;
+    margin-top: 0.9em;
+    
+    cursor: pointer;
+}
+
+.caja-fotoNuevoEmpleado{
+    width: 12.5em;
+    height: 12.5em;
+    margin-top: 2.8em;
+    border: 1px solid rgb(69, 3, 53);
+}
+
