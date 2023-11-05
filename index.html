@@ -3,39 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personal</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400&display=swap" rel="stylesheet"> 
+    <title>Document</title>
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    
     <header class="fixed-top">
         <nav class="navbar navbar-expand-lg navbar-dark ">
             <div class="container-fluid">   
                <a class="navbar-brand" href="#"><img class="logo" src="./assets/img/cbb47176eaf8cc735435.webp" alt="logo de tecnologías orange"></a>
-               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#contenedor" aria-controls="contenedor" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
-               </button>
-                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                </button>
+                <div class="collapse navbar-collapse" id="contenedor">
                     <div>
-                        <button type="button" id="boton-personal" class="btn p-3 mx-3 btn-light dropdown-toggle" data-toggle="collapse" data-target="#desplegable-Personal">
+                        <button type="button" id="boton-personal" class="btn p-3 mx-3 btn-light dropdown-toggle" data-bs-toggle="collapse" data-bs-target="#desplegable-Personal">
                             Personal
                         </button>
                         <div class="collapse dropdown-menu"   id="desplegable-Personal">
+                            <div class="group-desplegable">
+                                <div><h6 class="fs-5 mt-3">Nuevo empleado</h6></div>
+                                <a id="enlace-cargar" class="dropdown-item fs-5 item-cargar" data-bs-toggle="collapse" data-bs-target="#empleado-nuevo" aria-expanded="false" href="#">Cargar</a>  <!-- oculta es desplegable al hecer clic--> 
+                            </div>
                             <!-- la info del desplegable está organizada en dos grupos para que sea mas legible -->
                             <div class="group-desplegable">
                                 <div class="titulo-perfil"><h6 class="fs-5">Archivo</h6></div>
-                                <a class="dropdown-item item-legajo fs-5" data-bs-toggle="collapse" data-bs-target="#personal" aria-expanded="false" href="#">Legajo</a>
-                                <a class="dropdown-item fs-5" href="#">DNI</a>
-                            </div>
-        
-                            <div class="group-desplegable">
-                                <div><h6 class="fs-5 mt-3">Nuevo empleado</h6></div>
-                                <a class="dropdown-item fs-5 item-cargar" data-bs-toggle="collapse" data-bs-target="#empleado-nuevo" aria-expanded="false" href="#">Cargar</a>  <!-- oculta es desplegable al hecer clic--> 
-                                
+                                <a id="enlace-legajo" class="dropdown-item item-legajo fs-5" data-bs-toggle="collapse" data-bs-target="#personal" aria-expanded="false" href="#">Legajo</a>
+                                <a id="enlace-dni" class="dropdown-item fs-5" href="#">DNI</a>
                             </div>
                         </div>
 
@@ -48,94 +42,98 @@
     </header>
     
     <div class="container-fluid col-lg-3">
-            <main>
-             <!-- seccion personal / buscar o generar nuevo empleado -->
-                    <section id="personal" class="row justify-content-center collapse" >
+        <main>
+         
+                <!--Seccion empleado-nuevo-->
+                <section id="empleado-nuevo" class="row justify-content-center collapse">
 
-                        <div class="caja-seccion">
-                            <img class="fondoForm" src="./assets/img/usuario-red-personas-conexion-placa-circuito-tecnologia-conexion.jpg" alt="imagen sobre conectar y encontar">
-                            
-                                <div class="form-container">
-                                    <form action="" id="form">
-                                        <label for="legajo">
-                                        <span class="numero">Número de legajo</span>
-                                        <input type="number" id="legajo" required placeholder="Número" >
-                                        </label>
-
-                                        <input type="button" value="Aceptar" class="button-buscarEmpleado">
-                                    </form>
-                                </div>
-                            
-                        </div>
+                    <div class="caja-nuevoEmpleado">
+                        <img class="fondoFormulario" src="./assets/img/usuario-red-personas-conexion-placa-circuito-tecnologia-conexion.jpg" alt="imagen sobre conectar y encontar">
                         
-                    </section>
-
-                    <!--Seccion empleado-nuevo-->
-                    <section id="empleado-nuevo" class="row justify-content-center collapse">
-
-                        <div class="caja-nuevoEmpleado">
-                            <img class="fondoFormulario" src="./assets/img/usuario-red-personas-conexion-placa-circuito-tecnologia-conexion.jpg" alt="imagen sobre conectar y encontar">
-                            
-                            <div class="caja-datosNuevoEmpleado">
-                
-                                <div class="datos-containerNuevoEmpleado">
+                        <div class="caja-datosNuevoEmpleado">
             
-                                    <form action="#" id="formularioNuevoEmpleado">
-                                        
-                                        <label for="apyNom">
-                                            <span class="numero">Apellido y nombre</span>
-                                            <input type="text" id="apyNom" />
-                                        </label>
-            
-                                        <label for="legajo">
-                                            <span class="numero">Número de legajo</span>
-                                            <input type="number" id="legajo" />
-                                        </label>
-            
-                                        <label for="fechaNacimiento">
-                                            <span class="numero">Fecha de nacimiento</span>
-                                            <input type="date" id="fechaNacimiento" />
-                                        </label>
-            
-                                        <label for="DNI">
-                                            <span class="numero">Documento tipo DNI</span>
-                                            <input type="number" id="DNI" />
-                                        </label>
-            
-                                        <label for="domicilio">
-                                            <span class="numero">Domicilio</span>
-                                            <input type="text" id="domicilio" />
-                                        </label>
-            
-                                        <label for="telefono">
-                                            <span class="numero">Teléfono</span>
-                                            <input type="tel" id="telefono" />
-                                        </label>
-            
-                                        <label for="cargo">
-                                            <span class="numero">Cargo</span>
-                                            <input type="text" id="cargo"/>
-                                        </label>
-            
-                                        <input type="submit" value="Aceptar" class="button-cargarEmpleadoNuevo">
-            
-                                    </form>
+                            <div class="datos-containerNuevoEmpleado">
+        
+                                <form action="#" id="formularioNuevoEmpleado">
+                                    
+                                    <label for="apyNom">
+                                        <span class="numero">Apellido y nombre</span>
+                                        <input type="text" id="apyNom" />
+                                    </label>
+        
+                                    <label for="legajo">
+                                        <span class="numero">Número de legajo</span>
+                                        <input type="number" id="legajo" />
+                                    </label>
+        
+                                    <label for="fechaNacimiento">
+                                        <span class="numero">Fecha de nacimiento</span>
+                                        <input type="date" id="fechaNacimiento" />
+                                    </label>
+        
+                                    <label for="DNI">
+                                        <span class="numero">Documento tipo DNI</span>
+                                        <input type="number" id="DNI" />
+                                    </label>
+        
+                                    <label for="domicilio">
+                                        <span class="numero">Domicilio</span>
+                                        <input type="text" id="domicilio" />
+                                    </label>
+        
+                                    <label for="telefono">
+                                        <span class="numero">Teléfono</span>
+                                        <input type="tel" id="telefono" />
+                                    </label>
+        
+                                    <label for="cargo">
+                                        <span class="numero">Cargo</span>
+                                        <input type="text" id="cargo"/>
+                                    </label>
+        
+                                    <input type="submit" value="Aceptar" class="button-cargarEmpleadoNuevo">
+        
+                                </form>
                     
-                
-                                </div>
-                
-                                <div class="caja-fotoNuevoEmpleado"></div>
-                                
+                                <button class="button-cargarEmpleadoNuevo" id="finalizar-carga">Finalizar</button>
                             </div>
             
+                            <div class="caja-fotoNuevoEmpleado"></div>
+                            
+                            
                         </div>
-            
-                    </section>
-             </main> 
-    </div>
-    
+        
+                    </div>
+        
+                </section>
+
+                <!-- seccion personal / buscar -->
+                <section id="personal" class="row justify-content-center collapse" >
+
+                    <div class="caja-seccion">
+                        <img class="fondoForm" src="./assets/img/usuario-red-personas-conexion-placa-circuito-tecnologia-conexion.jpg" alt="imagen sobre conectar y encontar">
+                        
+                            <div class="form-container">
+                                <form action="#" id="form">
+                                    <label for="legajo">
+                                    <span class="numero">Número de legajo</span>
+                                    <input type="number" class="legajo" required placeholder="Número" >
+                                    </label>
+
+                                    <input type="submit" value="Aceptar" id = "buscarEmpleado" class="button-buscarEmpleado">
+                                </form>
+                            </div>
+                        
+                    </div>
+                    
+                </section>
+
+                
+
+         </main> 
+</div>
 
 <script src="./js/bootstrap.min.js"></script>
-<script src="./personal.js"></script>
+<script src="./script.js"></script>
 </body>
 </html>

@@ -1,79 +1,78 @@
+//Manipulacion del DOM
 
-
-////Capturando elementos con la manipulación del DOM
 document.addEventListener('DOMContentLoaded', function () {
     
-    /*objeto vacio, el cual contendra los objetos instanciados a partir de la función constructora. 
+    let btnPersonal = document.querySelector('#boton-personal');
+
+let menuDesplegable = document.querySelector('#desplegable-Personal');
+let enlaceCargar = document.querySelector('#enlace-cargar');
+let enlaceLegajo = document.querySelector('#enlace-legajo');
+let enlaceDNI = document.querySelector('#enlace-dni');
+
+let sectionEmpleadoNuevo = document.querySelector('#empleado-nuevo');
+let sectionPersonal = document.querySelector('#personal');
+let formBuscarEmpleado = document.querySelector('#form');
+
+let botonFinalizarCarga = document.querySelector('#finalizar-carga');
+
+
+
+// Envío a todos los elementos al array de elementos ocultos
+const elementosOcultos = [menuDesplegable, sectionEmpleadoNuevo, sectionPersonal];
+
+
+// Evento mouseover para desplegar el menú
+btnPersonal.addEventListener('mouseenter', mostrarDesplegable);
+function mostrarDesplegable(event) {
+    event.preventDefault();
+    console.log('evento mouseenter');
+
+    // Ocultar todos los elementos
+    elementosOcultos.forEach(element => {
+        element.classList.add('d-none');
+    });
+
+    // Mostrar solo el menuDesplegable
+    menuDesplegable.classList.remove('d-none');
+}
+
+//quitar el desplegable cuando se dispara el evento mouseleave
+menuDesplegable.addEventListener('mouseleave', function (event) {
+    event.preventDefault();
+    elementosOcultos.forEach(element => {if (element === menuDesplegable) {menuDesplegable.classList.add('d-none');  }  
+    });
+});
+
+// Ocultar desplegable al hacer clic en cualquier parte fuera del desplegable o el botón
+document.addEventListener('click', function (event) {
+    if (!menuDesplegable.contains(event.target) && event.target !== btnPersonal)
+/*Si el elemento que desencadeno el evento no esta dentro del desplegablePersonal y no es el botón botonPersonal.
+Oculto el desplegable si se hace clic en cualquier parte fuera del desplegable o del botón.  */
+       {
+           menuDesplegable.classList.remove('show');
+       }
+   });
+
+   //Mostrar seccion cargar empleado
+   enlaceCargar.addEventListener('click', mostrarSeccionNuevoEmpleado)
+   function mostrarSeccionNuevoEmpleado(event) {
+     event.preventDefault();
+     elementosOcultos.forEach(element => {if (element === sectionEmpleadoNuevo) {
+        sectionEmpleadoNuevo.classList.remove('d-none');
+    }
+    });
+   }
+
+//---------cargar empleado nuevo--------------------------------/
+//programando la carga de datos de un nuevo empleado:
+
+ /*objeto vacio, el cual contendra los objetos instanciados a partir de la función constructora. 
     Cada objeto nuevo que se instancia pertenece a un empleado nuevo*/
     let empleados = [];
     let jsonDatos = ''; //Declaro la vble. jsonData vacia para que esté disponible en todo el ambito.
 
-    let botonPersonal = document.querySelector('#boton-personal');
-    let desplegablePersonal = document.querySelector('#desplegable-Personal');
-    let seccionPersonal = document.querySelector('#personal');
-    let itemLegajo = document.querySelector('.item-legajo');
-    let itemCargar = document.querySelector('.item-cargar');
-    let empleadoNuevo = document.querySelector('#empleado-nuevo');
-    
-
-    // Programando el evento mouseenter para desplegar menu
-    botonPersonal.addEventListener('mouseenter', function () {
-        desplegablePersonal.classList.add('show');
-    });
-
-    // Evento mouseleave para ocultar desplegable
-    desplegablePersonal.addEventListener('mouseleave', function () {
-        desplegablePersonal.classList.remove('show');
-    });
-
-    // Ocultar desplegable al hacer clic en cualquier parte fuera del desplegable o el botón
-    document.addEventListener('click', function (event) {
-     if (!desplegablePersonal.contains(event.target) && event.target !== botonPersonal)
-/*Si el elemento que desencadeno el evento no esta dentro del desplegablePersonal y no es el botón botonPersonal.
-Oculto el desplegable si se hace clic en cualquier parte fuera del desplegable o del botón.  */
-        {
-            desplegablePersonal.classList.remove('show');
-        }
-    });
-
-
-    //ocultando seccion NuevoEmpleado cuando se hace clic en el enlace Legajo de archivo (seccion personal)
-    itemLegajo.addEventListener('click', ocultarNuevoEmpleado);
-    let visiblePersonal = true;
-    function ocultarNuevoEmpleado(event) {
-        event.preventDefault();
-        if (!visiblePersonal) {
-            empleadoNuevo.classList.add('hide');
-            visiblePersonal = true;
-        }
-        else{
-            empleadoNuevo.classList.remove('hide');
-            visiblePersonal = false;
-        }
-    }
-
-    //programando el item cargar empleado. Cuando hago clic en el enlace cargar nuevo empleado, oculto la seccion
-    //personal:
-    let visibleNuevoEmpleado = false;
-    itemCargar.addEventListener('click', ocultarPersonal);
-    function ocultarPersonal(event) {
-        event.preventDefault();
-        if (!visibleNuevoEmpleado) {
-            seccionPersonal.classList.toggle('hide');
-            visibleNuevoEmpleado = true;
-        }
-        else{
-            seccionPersonal.classList.add('show');
-            visibleNuevoEmpleado = false;
-        }
-    }
-    
-
-    
-    //programando la carga de datos de un nuevo empleado:
-
     //generando la fcion. constructora a partir de la cual se instanciaran los objetos nuevos empleados:
-     function NuevoEmpleado(apyNom, numLegajo, fechaNac, dni, domicilio, telefono, cargo ) {
+    function NuevoEmpleado(apyNom, numLegajo, fechaNac, dni, domicilio, telefono, cargo ) {
         this.apyNom = apyNom;
         this.numLegajo = numLegajo;
         this.fechaNac = fechaNac;
@@ -124,10 +123,40 @@ NuevoEmpleado.prototype.cargarEmpleado = function () {
 });
 }
 
-
 //llamo al metodo cargarEmpleado()
   let empleado = new NuevoEmpleado();
   empleado.cargarEmpleado();
 
+//finalizar carga de empleado nuevo
+botonFinalizarCarga.addEventListener('click', finalizarCarga);
+function finalizarCarga(event) {
+    event.preventDefault();
+    elementosOcultos.forEach(element => {if (element === sectionEmpleadoNuevo) {
+        sectionEmpleadoNuevo.classList.add('d-none');
+        console.log('finalizar carga!!!');
+    }
+        
+    });
+}
+
+
+//-----------buscar empleado en funcion del lagajo y dni------------
+
+enlaceLegajo.addEventListener('click', buscarEmpleado);
+
+function buscarEmpleado(event) {
+event.preventDefault();
+elementosOcultos.forEach(element => {if (element === sectionPersonal) {
+    sectionPersonal.classList.remove('d-none');
+    sectionEmpleadoNuevo.classList.add('d-none');
+}
+
+});    
+}
+
+//Buscar empleado existente
+
+
 });
+
 

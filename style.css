@@ -29,7 +29,7 @@ body {
 #empleado-nuevo{
     width: 50em; 
     height: 38em;
-    margin-top: 18em; /* ajusta  segun la altura de tu header +  margen adicional  */
+    margin-top: 14em; /* ajusta  segun la altura de tu header +  margen adicional  */
 }
 
 
@@ -144,26 +144,12 @@ input{
     cursor: pointer;
 }
 
-/* Boton nuevo empleado 
-.button-cargarEmpleado{
-    font-family: 'quicksand';
-    width: 150px;
-    height: 30px;
-    color: white;
-    background-color: rgb(69, 3, 53);
-    font-weight: bold;
-    border-radius: 3px;
-    border: none;
-    margin-top: 3px;
-    cursor: pointer;
-}  
-
 
 /*Estilo seccion Nuevo empleado */
 
 .caja-nuevoEmpleado{
     width: 50em; /* 500px / 16px = 31.25em */
-    height: 77em;
+    height: 78.09em;
     padding: 0;
     display: grid;
     grid-template-columns: [x0] 1fr[x1] 1fr[x2];
